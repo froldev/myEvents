@@ -10,17 +10,18 @@
                 <div class="form-row mt-4 mb-4">
                     <div class="col-12 mb-3">
                         <label class="form-label">Nom de la société :</label>
-                        <input type="text" class="form-control {% if societyError is not null %}is-invalid{% endif %}"
-                               id="society" name="society" aria-describedby="inputCréerSociété"
-                               value="{{ society.society }}" required>
+                        <input type="text" class="form-control {% if nameError is not null %}is-invalid{% endif %}"
+                               id="name" name="name" aria-describedby="inputCréerSociété"
+                               value="{{ society.name }}" required>
                         <div class="invalid-feedback">
-                            {{ societyError }}
+                            {{ nameError }}
                         </div>
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Adresse :</label>
                         <input type="text" class="form-control {% if addressError is not null %}is-invalid{% endif %}"
-                               id="address" name="address" aria-describedby="inputCréerSociété" required>
+                               id="address" name="address" aria-describedby="inputCréerSociété"
+                               value="{{ society.address }}" required>
                         <div class="invalid-feedback">
                             {{ addressError }}
                         </div>
@@ -28,7 +29,8 @@
                     <div class="col-12 mb-3">
                         <label class="form-label">Code Postal :</label>
                         <input type="text" class="form-control {% if cpError is not null %}is-invalid{% endif %}"
-                               id="cp" name="cp" aria-describedby="inputCréerSociété" required>
+                               id="cp" name="cp" aria-describedby="inputCréerSociété"
+                               value="{{ society.cp }}" required>
                         <div class="invalid-feedback">
                             {{ cpError }}
                         </div>
@@ -36,7 +38,8 @@
                     <div class="col-12 mb-3">
                         <label class="form-label">Ville :</label>
                         <input type="text" class="form-control {% if townError is not null %}is-invalid{% endif %}"
-                               id="town" name="town" aria-describedby="inputCréerSociété" required>
+                               id="town" name="town" aria-describedby="inputCréerSociété"
+                               value="{{ society.town }}" required>
                         <div class="invalid-feedback">
                             {{ townError }}
                         </div>
@@ -44,23 +47,26 @@
                     <div class="col-12 mb-3">
                         <label class="form-label">Logo :</label>
                         <input type="text" class="form-control {% if logoError is not null %}is-invalid{% endif %}"
-                               id="logo" name="logo" aria-describedby="inputCréerSociété" required>
+                               id="logo" name="logo" aria-describedby="inputCréerSociété"
+                               value="{{ society.logo }}" required>
                         <div class="invalid-feedback">
                             {{ logoError }}
                         </div>
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Téléphone :</label>
-                        <input type="text" class="form-control {% if telephoneError is not null %}is-invalid{% endif %}"
-                               id="telephone" name="telephone" aria-describedby="inputCréerSociété" required>
+                        <input type="text" class="form-control {% if phoneError is not null %}is-invalid{% endif %}"
+                               id="phone" name="phone" aria-describedby="inputCréerSociété"
+                               value="{{ society.phone }}" required>
                         <div class="invalid-feedback">
-                            {{ telephoneError }}
+                            {{ phoneError }}
                         </div>
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Email :</label>
                         <input type="text" class="form-control {% if emailError is not null %}is-invalid{% endif %}"
-                               id="email" name="email" aria-describedby="inputCréerSociété" required>
+                               id="email" name="email" aria-describedby="inputCréerSociété"
+                               value="{{ society.email }}" required>
                         <div class="invalid-feedback">
                             {{ emailError }}
                         </div>
@@ -68,22 +74,26 @@
                     <div class="col-12 mb-3">
                         <label class="form-label">Github :</label>
                         <input type="text" class="form-control"
-                               id="github" name="github" aria-describedby="inputCréerSociété">
+                               id="github" name="github" aria-describedby="inputCréerSociété"
+                               value="{{ society.github }}" >
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Facebook :</label>
                         <input type="text" class="form-control"
-                               id="facebook" name="facebook" aria-describedby="inputCréerSociété">
+                               id="facebook" name="facebook" aria-describedby="inputCréerSociété"
+                               value="{{ society.facebook }}" >
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Twitter :</label>
                         <input type="text" class="form-control"
-                               id="twitter" name="twitter" aria-describedby="inputCréerSociété">
+                               id="twitter" name="twitter" aria-describedby="inputCréerSociété"
+                               value="{{ society.twitter }}" >
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">Instagram :</label>
                         <input type="text" class="form-control"
-                               id="instagram" name="instagram" aria-describedby="inputCréerSociété">
+                               id="instagram" name="instagram" aria-describedby="inputCréerSociété"
+                               value="{{ society.instagram }}" >
                     </div>
                     <div class="col-12 mb-3">
                         <button type="submit" class="btn btn-warning btn-lg">Confirmer</button>

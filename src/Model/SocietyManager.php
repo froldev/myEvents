@@ -20,14 +20,14 @@ class SocietyManager extends AbstractManager
     public function insertSociety(array $society): bool
     {
         $request = $this->pdo->prepare("INSERT INTO " .self::TABLE. " 
-        (name, address, cp, town, logo, telephone, email, github, facebook, twitter, instagram) VALUES 
-        (:name, :address, :cp, :town, :logo, :telephone, :email, :github, :facebook, :twitter, :instagram)");
+        (name, address, cp, town, logo, phone, email, github, facebook, twitter, instagram) VALUES 
+        (:name, :address, :cp, :town, :logo, :phone, :email, :github, :facebook, :twitter, :instagram)");
         $request->bindValue(":name", ucfirst(strtolower($society["name"])), \PDO::PARAM_STR);
         $request->bindValue(":address", $society["address"], \PDO::PARAM_STR);
         $request->bindValue(":cp", $society["cp"], \PDO::PARAM_STR);
         $request->bindValue(":town", $society["town"], \PDO::PARAM_STR);
         $request->bindValue(":logo", $society["logo"], \PDO::PARAM_STR);
-        $request->bindValue(":telephone", $society["telephone"], \PDO::PARAM_STR);
+        $request->bindValue(":phone", $society["phone"], \PDO::PARAM_STR);
         $request->bindValue(":email", $society["email"], \PDO::PARAM_STR);
         $request->bindValue(":github", $society["github"], \PDO::PARAM_STR);
         $request->bindValue(":facebook", $society["facebook"], \PDO::PARAM_STR);
@@ -46,15 +46,16 @@ class SocietyManager extends AbstractManager
     public function updateSociety(array $society):bool
     {
         $request = $this->pdo->prepare("UPDATE " .self::TABLE. " SET 
-        name=:name, address=:address, cp=:cp, town=:town, logo=:logo, telephone=:telephone, email=:email, 
+        name=:name, address=:address, cp=:cp, town=:town, logo=:logo, phone=:phone, email=:email, 
         github=:github, facebook=:facebook, twitter=:twitter, instagram=:instagram 
         WHERE id=:id");
+        $request->bindValue(":id", $society['id'], \PDO::PARAM_INT);
         $request->bindValue(":name", ucfirst(strtolower($society["name"])), \PDO::PARAM_STR);
         $request->bindValue(":address", $society["address"], \PDO::PARAM_STR);
         $request->bindValue(":cp", $society["cp"], \PDO::PARAM_STR);
         $request->bindValue(":town", $society["town"], \PDO::PARAM_STR);
         $request->bindValue(":logo", $society["logo"], \PDO::PARAM_STR);
-        $request->bindValue(":telephone", $society["telephone"], \PDO::PARAM_STR);
+        $request->bindValue(":phone", $society["phone"], \PDO::PARAM_STR);
         $request->bindValue(":email", $society["email"], \PDO::PARAM_STR);
         $request->bindValue(":github", $society["github"], \PDO::PARAM_STR);
         $request->bindValue(":facebook", $society["facebook"], \PDO::PARAM_STR);

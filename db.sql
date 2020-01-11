@@ -9,7 +9,7 @@ CREATE TABLE society (
     cp VARCHAR(255) NOT NULL,
     town VARCHAR(255) NOT NULL,
     logo VARCHAR(255) NOT NULL,
-    telephone VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     github VARCHAR(255) NOT NULL,
     facebook VARCHAR(255) NOT NULL,
