@@ -12,16 +12,16 @@
             </div>
             <!-- Details -->
             <div class="col-4 d-flex flex-column menu">
-                <p>2 bis Quai François Mitterand
-                    <br>44200 NANTES</p>
-                <a href="mailto:contact@olympic-nantais.com">contact@olympic-nantais.com</a>
+                <p>{{ society.address }}</p>
+                <p>{{ society.cp }} {{ society.town }}</p>
+                <a href="mailto:{{ society.email }}">{{ society.email }}</a>
                 <br>
-                <a href="tel:+332.40.++.++.++">02.40.++.++.++ </a>
+                <a href="tel:{{ society.phone }}">{{ society.phone }}</a>
                 <br>
-                <a href="/admin/login" title="Espace administrateur" class="admin">Espace administrateur</a>
+                <a href="/admin/login" title="Espace administrateur" class="btn btn-site btn-lg">Espace administrateur</a>
             </div>
             <!-- Social medias -->
-            <div class="col-2 d-flex flex-column menu text-right">
+            <div id="social-media" class="col-2 d-flex flex-column text-right">
                 <a href="https://twitter.com/Olympic-Nantais"  target="_blank"
                    title="Nous suivre sur Twitter" class="menu">
                     <i class="fab fa-github"></i>

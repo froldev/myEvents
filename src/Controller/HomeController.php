@@ -26,13 +26,14 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $societyManger = new SocietyManager();
-        $society = $societyManger->showSociety();
+        $societyManager = new SocietyManager();
+        $society = $societyManager->showSociety();
 
         if (empty($society)) {
             return $this->twig->render("Home/firstConnexion.html.twig");
         }
 
+        $society = $societyManager->selectAll();
         $categories = new CategoriesManager();
         $listCategory = $categories->selectAll();
 
@@ -50,19 +51,22 @@ class HomeController extends AbstractController
             $listCategory = $categories->selectAll();
 
             return $this->twig->render('Home/index.html.twig', [
+                'society' => $society[0],
                 'events' => $events,
                 'categories' => $listCategory,
                 'carousels' => $carousel,
-                "nbCarousels" => $nbCarousel,
+                'nbCarousels' => $nbCarousel,
+                'partners' => $this->getPartners()
             ]);
         }
 
         return $this->twig->render('Home/index.html.twig', [
-            "events" => $events,
-            "categories" => $listCategory,
-            "carousels" => $carousel,
-            "nbCarousels" => $nbCarousel,
-            "partners" => $this->getPartners()
+            'society' => $society[0],
+            'events' => $events,
+            'categories' => $listCategory,
+            'carousels' => $carousel,
+            'nbCarousels' => $nbCarousel,
+            'partners' => $this->getPartners()
         ]);
     }
 }

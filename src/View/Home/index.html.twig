@@ -4,14 +4,16 @@
 
 {% block content %}
 
+    <section id="content">
+
     {% include 'Blocks/_carousel.html.twig' %}
     <h1>Programmation :</h1>
 
-    <section id="search" class="py-3">
+    <div id="search" class="py-3">
         {% include 'Blocks/_search.html.twig' %}
-    </section>
+    </div>
 
-    <section id="events" class="py-3">
+    <div id="events" class="py-3">
         <div class="row">
             {% if events is empty %}
                 <p id="no-events">Il n'y a pas encore d'évènements de prévus.</p>
@@ -39,6 +41,8 @@
                 {% endfor %}
             {% endif %}
         </div>
+    </div>
+
     </section>
 
 {% endblock %}
