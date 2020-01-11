@@ -2,6 +2,7 @@
 :root {
     --dark: #0F1626;
     --white: #F5F5F5;
+    --grey:#E1E1E1;
     --orange: #FBA500;
     --orangeDark : #FF533D;
     --orangeLight : #FEE4C5;
@@ -76,8 +77,9 @@ html, body {
     margin: auto;
     border:3px solid var(--orange);
     border-radius:10px;
-    background-color:var(--dark);
+    background-color:var(--grey);
     color:var(--orange);
+    box-shadow:2px 2px 2px var(--dark);
 }
 
 #login-form .form-signin input {

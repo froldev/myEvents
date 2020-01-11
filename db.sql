@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS olympic_db;
-CREATE DATABASE olympic_db;
-USE olympic_db;
+DROP DATABASE IF EXISTS myevents;
+CREATE DATABASE myevents;
+USE myevents;
 
-CREATE TABLE society(
+CREATE TABLE society (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,

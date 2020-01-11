@@ -9,6 +9,7 @@ class CategoriesController extends AbstractController
     public function list(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $categoriesManager = new CategoriesManager();
         $categories = $categoriesManager->selectCategories();
@@ -21,6 +22,7 @@ class CategoriesController extends AbstractController
     public function add(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $categoryError = null;
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -46,6 +48,7 @@ class CategoriesController extends AbstractController
     public function delete(int $id): void
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $categoriesManager = new CategoriesManager();
         $categoriesManager->deleteCategories($id);
@@ -55,6 +58,7 @@ class CategoriesController extends AbstractController
     public function edit(int $id): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $categoriesManager = new CategoriesManager();
         $category = $categoriesManager->selectOneById($id);

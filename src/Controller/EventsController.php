@@ -11,6 +11,7 @@ class EventsController extends AbstractController
     public function add()
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $titleError = $dateTimeError = $descriptionError = $priceError = $imageError = null;
 
@@ -64,6 +65,7 @@ class EventsController extends AbstractController
     public function list(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $eventsManager = new EventsManager();
         $events = $eventsManager->selectAll();
@@ -77,6 +79,7 @@ class EventsController extends AbstractController
     public function delete(int $id): void
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $eventsManager = new EventsManager();
         $eventsManager->deleteEvent($id);
@@ -86,6 +89,7 @@ class EventsController extends AbstractController
     public function edit(int $id)
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $eventsManager = new EventsManager();
         $event = $eventsManager->selectOneById($id);

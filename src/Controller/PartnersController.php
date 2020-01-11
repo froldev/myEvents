@@ -9,6 +9,7 @@ class PartnersController extends AbstractController
     public function list(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $partnersManager = new PartnersManager();
         $partners = $partnersManager->selectPartner();
@@ -21,6 +22,7 @@ class PartnersController extends AbstractController
     public function add(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $partnerError = null;
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -50,6 +52,7 @@ class PartnersController extends AbstractController
     public function delete(int $id): void
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $partnersManager = new PartnersManager();
         $partnersManager->deletePartners($id);
@@ -59,6 +62,7 @@ class PartnersController extends AbstractController
     public function edit(int $id): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $partnersManager = new PartnersManager();
         $partner = $partnersManager->selectOneById($id);

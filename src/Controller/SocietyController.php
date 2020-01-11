@@ -6,28 +6,23 @@ use App\Model\SocietyManager;
 
 class SocietyController extends AbstractController
 {
-    public function show(): string
+    public function list(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
-        $societyManger = new SocietyManager();
-        $society = $societyManger->showSociety();
+        $societyManager = new SocietyManager();
+        $society = $societyManager->showSociety();
 
-        if (empty($society)) {
-            return $this->twig->render("Admin/Society/add.html.twig", [
-                'connexion' => '',
-            ]);
-        }
-
-        return $this->twig->render("Admin/Society/show.html.twig", [
-            'society' => $society,
-            'connexion' => "ok",
+        return $this->twig->render("Admin/Society/list.html.twig", [
+            'companies' => $society,
+            'connexion' => 'ok',
         ]);
     }
 
     public function add(): string
     {
-        //$this->verifySession();
+        $this->verifySession();
 
         $nameError = null;
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -36,12 +31,13 @@ class SocietyController extends AbstractController
                 $nameError = "Merci de saisir le nom d'une société";
                 $isValid = false;
             }
+
             // if it's ok
             if ($isValid) {
                 $societyManager = new SocietyManager();
 
-                if ($societyManager->insertCategories($_POST)) {
-                    header("Location:/society/show");
+                if ($societyManager->insertSociety($_POST)) {
+                    header("Location:/society/list");
                 }
             }
         }
@@ -53,6 +49,7 @@ class SocietyController extends AbstractController
     public function delete(int $id): void
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $societyManager = new SocietyManager();
         $societyManager->deleteSociety($id);
@@ -62,6 +59,7 @@ class SocietyController extends AbstractController
     public function edit(int $id): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $societyManger = new SocietyManager();
         $society = $societyManger->selectOneById($id);
@@ -69,11 +67,12 @@ class SocietyController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $society['name'] = $_POST['name'];
             if ($societyManger->updateCategories($society)) {
-                header("Location:/society/show");
+                header("Location:/society/list");
             }
         }
         return $this->twig->render('Admin/Society/edit.html.twig', [
-            'category' => $category,
+            'society' => $society,
+            'connexion' => 'ok',
         ]);
     }
 }

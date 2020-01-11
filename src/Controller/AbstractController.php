@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\PartnersManager;
+use App\Model\SocietyManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -52,6 +53,16 @@ abstract class AbstractController
     {
         if (!$_SESSION) {
             header('Location:/admin/login');
+        }
+    }
+
+    public function verifySociety()
+    {
+        $societyManager = new SocietyManager();
+        $society = $societyManager->showSociety();
+
+        if (empty($society)) {
+            header("Location:/society/add");
         }
     }
 }

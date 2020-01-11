@@ -10,6 +10,7 @@ class UsersController extends AbstractController
     public function list()
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $usersManager = new UsersManager();
         $users = $usersManager->selectUsersAndRole();
@@ -26,6 +27,7 @@ class UsersController extends AbstractController
     public function add(): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $rolesManager = new RoleManager();
         $roles = $rolesManager->selectAll();
@@ -87,6 +89,7 @@ class UsersController extends AbstractController
     public function delete(int $id): void
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $usersManager = new UsersManager();
         $users = $usersManager->selectOneById($id);
@@ -100,6 +103,7 @@ class UsersController extends AbstractController
     public function edit(int $id): string
     {
         $this->verifySession();
+        $this->verifySociety();
 
         $usersManager = new UsersManager();
         $user = $usersManager->selectOneById($id);
