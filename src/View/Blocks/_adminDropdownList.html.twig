@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="category">Catégorie :</label>
+    <select name="category">
+        <option value=""> -- choix -- </option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.category }}</option>
+        {% endfor %}
+    <div class="invalid-feedback">
+
+    </div>
+    </select>
+</div>

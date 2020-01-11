@@ -1,0 +1,70 @@
+<nav id="navbar-aside" class="navbar navbar-expand-md navbar-dark bg-secondary text-center justify-content-center">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav flex-column mr-auto">
+            {% if connexion is not empty %}
+            <li class="nav-item">
+                <a class="nav-link" href="/events/list">
+                    <i class="fas fa-chart-bar"></i>
+                    Dashboard
+                </a>
+            </li>
+            <hr>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="/society/show">
+                    <i class="fas fa-chart-bar"></i>
+                    Société
+                </a>
+            </li>
+            {% if connexion is not empty %}
+            <hr>
+            {% if session.role == 1 %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/list">
+                        <i class="far fa-user"></i>
+                        Utilisateurs
+                    </a>
+                </li>
+                <hr>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="/events/list">
+                    <i class="far fa-edit"></i>
+                    Evenements
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/categories/list">
+                    <i class="far fa-list-alt"></i>
+                    Catégories
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/partners/list">
+                    <i class="fas fa-music"></i>
+                    Artistes
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/partners/list">
+                    <i class="far fa-handshake"></i>
+                    Partenaires
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/comments/list">
+                    <i class="far fa-envelope-open"></i>
+                    Messages
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+</nav>

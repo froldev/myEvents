@@ -1,0 +1,113 @@
+
+:root {
+    --dark: #0F1626;
+    --white: #F5F5F5;
+    --orange: #FBA500;
+    --orangeDark : #FF533D;
+    --orangeLight : #FEE4C5;
+}
+
+/* général */
+* {
+    padding:0;
+    margin:0;
+}
+
+
+html, body {
+    height: 100%;
+}
+
+.container-fluid {
+    padding-right:0px;
+    padding-left:0px;
+    margin:0px;
+}
+
+.row{
+    margin-left:0px !important;
+    margin-right:0px !important;
+}
+
+/* -------------------------------------------- */
+/* fonts */
+
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 45px;
+}
+
+h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 35px;
+}
+
+h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 25px;
+}
+
+
+/* -------------------------------------------- */
+/* navbar */
+
+#nav {
+    background-color:var(--dark);
+}
+
+#nav li {
+    padding:10px;
+}
+
+#nav li a {
+    color:var(--orange);
+    font-family: 'Special Elite', cursive;
+}
+
+#nav li:hover {
+    background-color: var(--orange);
+}
+
+#nav li:hover a {
+    color:var(--dark);
+    text-decoration: underline;
+}
+
+/* -------------------------------------------- */
+/* Partners */
+#partners {
+    background-color:var(--dark);
+}
+
+#partners a {
+    color:var(--orange);
+}
+
+/* -------------------------------------------- */
+/* Footer */
+#footer {
+    color:var(--orange);
+    background-color:var(--dark);
+    font-family: 'Special Elite', cursive;
+}
+
+#footer a {
+    color:var(--orange);
+    font-family: 'Special Elite', cursive;
+}
+
+/* -------------------------------------------- */
+/* Mobile Version */
+/* -------------------------------------------- */
+
+@media screen and (min-width: 769px) {
+
+}
+
+@media screen and (max-width: 640px){
+
+}

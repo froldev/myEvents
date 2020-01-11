@@ -1,0 +1,15 @@
+<form class="my-lg-0" method="post" action="">
+    <div class="form-inline my-2">
+        <label class="form-label col-2">Rechercher : </label>
+        <input class="form-control col-5" type="search" placeholder="Rechercher un artiste ou un évènement ..."
+               aria-label="search" name="search">
+        <label class="form-label col-2"> ou une Catégorie : </label>
+        <select class="custom-select col-3">
+            <option selected>Sélectionner une catégorie</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.category }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary col-1">Rechercher</button>
+    </div>
+</form>

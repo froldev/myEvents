@@ -1,0 +1,14 @@
+<section id="partners">
+    <!--Partners-->
+    <div class="container">
+        <div class="row justify-content-between">
+            {% for partner in partners %}
+                <div class="col-4 text-center partners">
+                    <a href="{{ partner.link }}" target="_blank" title="Partenaire">
+                        <h3>{{ partner.name }}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

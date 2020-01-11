@@ -1,0 +1,174 @@
+
+:root {
+    --dark: #0F1626;
+    --white: #F5F5F5;
+    --orange: #FBA500;
+    --orangeDark : #FF533D;
+    --orangeLight : #FEE4C5;
+}
+
+
+/* général */
+* {
+    padding:0;
+    margin:0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container-fluid {
+    padding-right:0px;
+    padding-left:0px;
+    margin:0px;
+}
+
+.row{
+    margin-left:0px !important;
+    margin-right:0px !important;
+}
+
+/* -------------------------------------------- */
+/* buttons */
+/* -------------------------------------------- */
+.btn-site {
+    background-color:var(--orange);
+    color:var(--dark);
+    border:1px solid var(--dark);
+    box-shadow: 3px 3px 3px var(--dark);
+}
+
+.btn-site:hover {
+    background-color:var(--dark);
+    color:var(--orange);
+    border:1px solid var(--orange);
+    box-shadow: 2px 2px 2px var(--orange);
+}
+
+/* -------------------------------------------- */
+/* first connexion */
+/* -------------------------------------------- */
+
+#firstConnexion {
+    border: 1px solid var(--orange);
+    border-radius:10px;
+    margin:20px;
+}
+
+#firstConnexion #blockFirstConnexion {
+    padding:50px;
+}
+
+/* -------------------------------------------------------- */
+/* login admin */
+/* -------------------------------------------------------- */
+#login-form{
+    background-color:var(--white);
+    color:var(--dark);
+    padding:50px;
+}
+
+#login-form .form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+    border:3px solid var(--orange);
+    border-radius:10px;
+    background-color:var(--dark);
+    color:var(--orange);
+}
+
+#login-form .form-signin input {
+    border:1px solid var(--orange);
+}
+
+#login-form .error-connexion{
+    display:block;
+    font-weight:bold;
+    margin: 40px;
+}
+
+
+/* -------------------------------------------- */
+/* admin */
+/* -------------------------------------------- */
+#page-admin{
+    min-height: 100%;
+    position: relative;
+}
+
+#bloc-principal {
+    min-height:100vh-56px;
+    padding-bottom: 56px;
+}
+
+#navbar-aside li a i {
+    height:32px;
+    width:auto;
+}
+
+#adminFooter {
+    height: 56px;
+    width:100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#adminNav, #content{
+    padding-left:0px;
+    padding-right:0px;
+}
+
+#adminNav{
+    background-color: #6C757C;
+}
+
+#content section{
+    padding:3%;
+}
+
+/* -------------------------------------------- */
+/* society */
+/* -------------------------------------------- */
+
+#adminTitle {
+    margin:0 auto;
+    text-align:center;
+    padding:20px;
+    color:var(--dark);
+    background-color:var(--orange);
+}
+
+
+/* -------------------------------------------- */
+/* admin */
+/* -------------------------------------------- */
+.card-overflow {
+    max-height: 100px;
+    overflow: hidden;
+}
+
+#adminEvent h1{
+    padding-left:0px;
+    padding-right: 0px;
+}
+
+#adminEventList button{
+    width: 80%;
+    margin: auto;
+}
+
+/* -------------------------------------------------------- */
+/* media queries*/
+/* -------------------------------------------------------- */
+/* tablets */
+@media (min-width: 768px) {
+
+}
+
+/* desktops */
+@media (min-width: 992px) {
+
+}

@@ -1,0 +1,35 @@
+{% if nbCarousels > 0 %}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" id="logos" role="listbox">
+    <div class="carousel-item active">
+      <div class="block py-3">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            {% for carousel in carousels %}
+              <div class="col-6">
+                <a href="/olympic/event/{{ carousel.id }}">
+                  <img class="w-100 d-block img-fluid" src="{{ carousel.image }}"
+                     alt="{{carousel.title}}">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>{{carousel.title|upper}}</h5>
+                    <p>Le {{ carousel.date_time|date("m/d/Y") }}</p>
+                    <p>Voir</p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+{% endif %}
