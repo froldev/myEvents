@@ -6,11 +6,13 @@
 
     <section id="partnerAdd">
 
-        <h1>Ajouter un nouveau partenaire :</h1>
         <div class="row">
-            <button type="submit" class="btn btn-primary btn-lg mb-2 mx-auto">
-                <a class="text-white" href="/partners/add">Ajouter</a>
-            </button>
+            <h1 clas="col-6">Nouveau partenaire :</h1>
+            <a class="text-white col-1 mr-2" href="/partners/add">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    +
+                </button>
+            </a>
         </div>
 
     </section>
@@ -23,7 +25,6 @@
                 <thead class="table-striped">
                     <tr class="bg-warning">
                         <th scope="col">Nom du partenaire</th>
-                        <th scope="col">Lien du site</th>
                         <th scope="col">Modifier</th>
                         <th scope="col">Supprimer</th>
                     </tr>
@@ -32,7 +33,6 @@
                 {% for partner in partners %}
                     <tr>
                         <td>{{partner.name}}</td>
-                        <td>{{partner.link}}</td>
                         <td><button type="button" class="btn btn-success">
                                 <a class="text-white" href="/partners/edit/{{ partner.id }}">Mise à jour</a>
                             </button></td>
