@@ -10,31 +10,35 @@
                 <a href="/olympic/history" title="Tu veux connaître notre histoire ?" class="menu">Notre histoire</a>
                 <a href="/olympic/contact" title="Tu veux nous contacter ?" class="menu">Nous contacter</a>
             </div>
-            <!-- Details -->
+            <!-- Contact -->
             <div class="col-4 d-flex flex-column menu">
                 <p>{{ society.address }}</p>
                 <p>{{ society.cp }} {{ society.town }}</p>
                 <a href="mailto:{{ society.email }}">{{ society.email }}</a>
-                <br>
                 <a href="tel:{{ society.phone }}">{{ society.phone }}</a>
-                <br>
-                <a href="/admin/login" title="Espace administrateur" class="btn btn-site btn-lg">Espace administrateur</a>
             </div>
             <!-- Social medias -->
             <div id="social-media" class="col-2 d-flex flex-column text-right">
-                <a href="https://twitter.com/Olympic-Nantais"  target="_blank"
-                   title="Nous suivre sur Twitter" class="menu">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.facebook.com/Olympic-Nantais" target="_blank" title="Notre page Facebook" class="menu">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/Olympic-Nantais" target="_blank" title="Les plus belles photos et vidéos" class="menu">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/Olympic-Nantais" target="_blank" title="Les plus belles photos et vidéos" class="menu">
-                    <i class="fab fa-github"></i>
-                </a>
+                {% if society.twitter is not empty %}
+                    <a href="{{ society.twitter }}"  target="_blank" title="Nous suivre sur Twitter" >
+                        <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
+                {% if society.facebook is not empty %}
+                    <a href="{{ society.facebook }}" target="_blank" title="Nous suivre sur Facebook">
+                        <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
+                {% if society.instagram is not empty %}
+                    <a href="{{ society.instagram}}" target="_blank" title="Nous suivre sur Instagram">
+                        <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
+                {% if society.github is not empty %}
+                    <a href="{{ society.github }}" target="_blank" title="Nous suivre sur Github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
             </div>
             </div>
         </div>

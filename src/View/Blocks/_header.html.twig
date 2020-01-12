@@ -1,5 +1,7 @@
 <div class="row">
     <a class="mx-auto" href="/">
-        <img src="{{ society.logo}}" alt="logo {{ society.name}}" class="logo" width="150">
+        {% if society.logo is not empty %}
+                <img src="{{ society.logo}}" width="150"  class="logo" alt="Logo {{ society.name }}">
+        {% endif %}
     </a>
 </div>

@@ -6,7 +6,7 @@
 
     <section id="partnerAdd">
 
-        <h1>Ajouter un nouvel utilisateur :</h1>
+        <h1>Ajouter un utilisateur :</h1>
         <div class="row">
             <button type="submit" class="btn btn-primary btn-lg mb-2 mx-auto">
                 <a class="text-white" href="/users/add">Ajouter</a>
@@ -35,10 +35,14 @@
                         <td>{{ user.role }}</td>
                         <td><button type="button" class="btn btn-success">
                                 <a class="text-white" href="/users/edit/{{ user.id }}">Mise à jour</a>
-                            </button></td>
-                        <td><button type="button" class="btn btn-danger">
+                            </button>
+                        </td>
+                        <td><button type="button" class="btn btn-danger"
+                                    onclick="if(window.confirm ('Voulez-vous vraiment supprimer cet utilisateur ?'))
+                                    {return true;}else{return false;}">
                                 <a class="text-white" href="/users/delete/{{ user.id }}">Supprimer</a>
-                            </button></td>
+                            </button>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

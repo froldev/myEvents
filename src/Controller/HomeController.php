@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\NavbarManager;
 use App\Model\PartnersManager;
 use App\Model\ProgrammingManager;
 use App\Model\CategoriesManager;
@@ -34,11 +35,17 @@ class HomeController extends AbstractController
         }
 
         $society = $societyManager->selectAll();
+        $society = $society[0];
+
+        $navbar = new NavbarManager();
+        $navs = $navbar->selectNavbar();
+
         $categories = new CategoriesManager();
         $listCategory = $categories->selectAll();
 
         $programmingManager = new ProgrammingManager();
         $events = $programmingManager->selectAll();
+
         $carousel = $programmingManager->carouselView();
         $nbCarousel = count($carousel);
 
@@ -51,7 +58,8 @@ class HomeController extends AbstractController
             $listCategory = $categories->selectAll();
 
             return $this->twig->render('Home/index.html.twig', [
-                'society' => $society[0],
+                'society' => $society,
+                'navs' => $navs,
                 'events' => $events,
                 'categories' => $listCategory,
                 'carousels' => $carousel,
@@ -61,7 +69,8 @@ class HomeController extends AbstractController
         }
 
         return $this->twig->render('Home/index.html.twig', [
-            'society' => $society[0],
+            'society' => $society,
+            'navs' => $navs,
             'events' => $events,
             'categories' => $listCategory,
             'carousels' => $carousel,

@@ -1,0 +1,35 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}Olympic Nantais || Liste des catégories{% endblock %}
+
+{% block content %}
+
+    <section id="navbarList">
+
+        <h1>Liste des Menus :</h1>
+        <div class="row">
+            <table class="table col-12">
+                <thead class="table-striped">
+                    <tr class="bg-warning">
+                        <th scope="col">Nom du menu</th>
+                        <th scope="col">Modifier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for navbar in navbars %}
+                    <tr>
+                        <td>{{ navbar.text }}</td>
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                <a class="text-white" href="/navbar/edit/{{ navbar.id }}">Mise à jour</a>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+{% endblock %}

@@ -2,29 +2,39 @@
 
 namespace App\Controller;
 
+use App\Model\NavbarManager;
+
 class NavbarController extends AbstractController
 {
     public function list()
     {
         $this->verifySession();
         $this->verifySociety();
-    }
 
-    public function add(): string
-    {
-        $this->verifySession();
-        $this->verifySociety();
-    }
+        $navbarManager = new NavbarManager();
+        $navbars = $navbarManager->selectNavbar();
 
-    public function delete(int $id): void
-    {
-        $this->verifySession();
-        $this->verifySociety();
+        return $this->twig->render("Admin/Navbar/list.html.twig", [
+            "navbars" => $navbars,
+        ]);
     }
 
     public function edit(int $id): string
     {
         $this->verifySession();
         $this->verifySociety();
+
+        $navbarManagaer = new NavbarManager();
+        $navbar = $navbarManagaer->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $navbar['text'] = $_POST['text'];
+            if ($navbarManagaer->updateNavbar($navbar)) {
+                header("Location:/navbar/list");
+            }
+        }
+        return $this->twig->render('Admin/Navbar/edit.html.twig', [
+            'navbar' => $navbar,
+        ]);
     }
 }

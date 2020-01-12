@@ -92,9 +92,13 @@ class UsersController extends AbstractController
         $this->verifySociety();
 
         $usersManager = new UsersManager();
-        $users = $usersManager->selectOneById($id);
+        $user = $usersManager->selectOneById($id);
 
-        if (strtolower($users['role_id']) != 1) {
+        if ($user['email'] === "admin@admin.fr") {
+            header("Location:/users/list");
+        }
+
+        if (strtolower($user['role_id']) != 1) {
             $usersManager->deleteUsers($id);
         }
         header("Location:/users/list");
@@ -107,6 +111,10 @@ class UsersController extends AbstractController
 
         $usersManager = new UsersManager();
         $user = $usersManager->selectOneById($id);
+
+        if ($user['email'] === "admin@admin.fr") {
+            header("Location:/users/list");
+        }
 
         $rolesManager = new RoleManager();
         $roles = $rolesManager->selectAll();

@@ -17,6 +17,20 @@ CREATE TABLE society (
     instagram VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE navbar(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(25) NOT NULL,
+    link VARCHAR(255) NOT NULL
+);
+
+INSERT INTO navbar (text, link)
+VALUES
+('Tu veux du bon son ?', '/'),
+('Tu veux tout savoir ?', '/olympic/informations'),
+('Tu veux notre histoire ?', '/olympic/history'),
+('Tu veux nous contacter ?', '/olympic/contact')
+;
+
 CREATE TABLE role(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     role VARCHAR(255) NOT NULL

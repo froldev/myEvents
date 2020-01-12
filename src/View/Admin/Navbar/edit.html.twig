@@ -1,0 +1,23 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block content %}
+
+    <section>
+        <div class="row">
+
+            <h1>Menu à modifier :</h1>
+            <form method="POST" class="col-12">
+                <div class="form-group">
+                    <label class="form-label"></label>
+                    <input type="text" class="form-control" id="text" name="text"
+                           aria-describedby="inputMiseAJourDeLaCatégorie" value="{{ navbar.text }}">
+                </div>
+                <button type="submit" class="btn btn-warning btn-lg mb-2">Modifier</button>
+            </form>
+        </div>
+        <button type="submit" class="btn btn-dark mb-2">
+            <a class="text-white" href="/navbar/list"> << Retour</a>
+        </button>
+    </section>
+
+{% endblock %}
