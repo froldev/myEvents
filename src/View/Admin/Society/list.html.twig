@@ -19,7 +19,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                        {% for society in companies %}
                         <td>{{ society.name }}</td>
                         <td>
                             <a class="btn btn-outline-success" href="/society/edit/{{ society.id }}">Mise à jour</a>
@@ -29,7 +28,6 @@
                                onclick="if(window.confirm ('Voulez-vous vraiment supprimer cet évènement ?'))
                                     {return true;}else{return false;}">Supprimer</a>
                         </td>
-                        {% endfor %}
                     </tr>
                 </tbody>
             </table>

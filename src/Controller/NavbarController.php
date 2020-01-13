@@ -24,18 +24,26 @@ class NavbarController extends AbstractController
         $this->verifySession();
         $this->verifySociety();
 
-        $navbarManagaer = new NavbarManager();
-        $navbar = $navbarManagaer->selectOneById($id);
+        $navbarManager = new NavbarManager();
+        $navbar = $navbarManager->selectOneById($id);
 
+        $textError = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $navbar['text'] = $_POST['text'];
-            $navbar['list'] = $_POST['list'];
-            if ($navbarManagaer->updateNavbar($navbar)) {
-                header("Location:/navbar/list");
+            $isValid = true;
+            if (strlen($_POST['text']) > 25) {
+                $textError = "Votre texte ne doit pas dépasser 25 caractères";
+                $isValid = false;
+            }
+            if ($isValid) {
+                $navbar['text'] = $_POST['text'];
+                if ($navbarManager->updateNavbar($navbar)) {
+                    header("Location:/navbar/list");
+                }
             }
         }
         return $this->twig->render('Admin/Navbar/edit.html.twig', [
             'navbar' => $navbar,
+            'textError' => $textError,
         ]);
     }
 }

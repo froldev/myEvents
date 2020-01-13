@@ -27,9 +27,9 @@ CREATE TABLE navbar(
 INSERT INTO navbar (text, link, list)
 VALUES
 ('Tu veux du bon son ?', '/', 1),
-('Tu veux tout savoir ?', '/olympic/informations', 2),
-('Tu veux notre histoire ?', '/olympic/history', 3),
-('Tu veux nous contacter ?', '/olympic/contact', 4)
+('Tu veux tout savoir ?', '/myevents/informations', 2),
+('Tu veux notre histoire ?', '/myevents/history', 3),
+('Tu veux nous contacter ?', '/myevents/contact', 4)
 ;
 
 CREATE TABLE role(

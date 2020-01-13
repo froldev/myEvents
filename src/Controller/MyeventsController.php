@@ -6,8 +6,9 @@ use App\Model\DetailManager;
 use App\Model\NavbarManager;
 use App\Model\SocietyManager;
 
-class OlympicController extends AbstractController
+class MyeventsController extends AbstractController
 {
+
     public function informations()
     {
         $navbar = new NavbarManager();
