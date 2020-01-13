@@ -5,7 +5,6 @@ USE myevents;
 CREATE TABLE society (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    slug VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     cp VARCHAR(255) NOT NULL,
     town VARCHAR(255) NOT NULL,
@@ -21,15 +20,16 @@ CREATE TABLE society (
 CREATE TABLE navbar(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     text VARCHAR(25) NOT NULL,
-    link VARCHAR(255) NOT NULL
+    link VARCHAR(255) NOT NULL,
+    list INT NOT NULL
 );
 
-INSERT INTO navbar (text, link)
+INSERT INTO navbar (text, link, list)
 VALUES
-('Tu veux du bon son ?', '/'),
-('Tu veux tout savoir ?', '/olympic/informations'),
-('Tu veux notre histoire ?', '/olympic/history'),
-('Tu veux nous contacter ?', '/olympic/contact')
+('Tu veux du bon son ?', '/', 1),
+('Tu veux tout savoir ?', '/olympic/informations', 2),
+('Tu veux notre histoire ?', '/olympic/history', 3),
+('Tu veux nous contacter ?', '/olympic/contact', 4)
 ;
 
 CREATE TABLE role(
@@ -68,25 +68,6 @@ CREATE TABLE event(
     image VARCHAR(255) NOT NULL,
     video VARCHAR(255) NULL,
     link VARCHAR(255) NULL
-);
-
-CREATE TABLE artist(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    link VARCHAR(255) NULL
-);
-
-CREATE TABLE event_artist(
-    event_id INT NOT NULL,
-    artist_id INT NOT NULL,
-    FOREIGN KEY (event_id)
-        REFERENCES event(id)
-        ON DELETE CASCADE
-        ON UPDATE NO ACTION,
-    FOREIGN KEY (artist_id)
-        REFERENCES artist(id)
-        ON DELETE CASCADE
-        ON UPDATE NO ACTION
 );
 
 CREATE TABLE category(

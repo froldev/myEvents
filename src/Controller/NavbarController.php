@@ -29,6 +29,7 @@ class NavbarController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $navbar['text'] = $_POST['text'];
+            $navbar['list'] = $_POST['list'];
             if ($navbarManagaer->updateNavbar($navbar)) {
                 header("Location:/navbar/list");
             }

@@ -4,38 +4,49 @@
 
 {% block content %}
 
-<section id="societyShow">
-    <div class="row">
+    <section id="societyShow">
+        <div class="row">
 
-        <h1>Gestion de la société :</h1>
+            <h1>Gestion de la société :</h1>
 
-        <table class="table col-12">
-            <thead class="table-striped">
-            <tr class="bg-warning">
-                <th scope="col">Nom de la société</th>
-                <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {% for society in companies %}
-                    <td>{{ society.name }}</td>
-                    <td>
-                        <button type="button" class="btn btn-success">
-                            <a class="text-white" href="/society/edit/{{ society.id }}">Mise à jour</a>
-                        </button></td>
-                    <td>
-                        <button type="button" class="btn btn-danger"
-                                onclick="if(window.confirm ('Voulez-vous vraiment supprimer cet évènement ?'))
-                                    {return true;}else{return false;}">
-                            <a class="text-white" href="/society/delete/{{ society.id }}">Supprimer</a>
-                        </button>
-                    </td>
-                    {% endfor %}
+            <table class="table col-12">
+                <thead class="table-striped">
+                <tr class="bg-warning">
+                    <th scope="col">Nom de la société</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for society in companies %}
+                        <td>{{ society.name }}</td>
+                        <td>
+                            <a class="btn btn-outline-success" href="/society/edit/{{ society.id }}">Mise à jour</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-danger" href="/society/delete/{{ society.id }}"
+                               onclick="if(window.confirm ('Voulez-vous vraiment supprimer cet évènement ?'))
+                                    {return true;}else{return false;}">Supprimer</a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+
+            <h1>Voir le site :</h1>
+            <p class="col-12">Attention : vous allez être déconnecté de l'espace administration</p>
+            <div class="col-12">
+                <a class="btn btn-outline-primary btn-lg" href="/">Accéder</a>
+            </div>
+
+
+        </div>
+    </section>
 
 {% endblock %}

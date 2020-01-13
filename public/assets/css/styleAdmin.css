@@ -31,23 +31,6 @@ html, body {
 }
 
 /* -------------------------------------------- */
-/* buttons */
-/* -------------------------------------------- */
-.btn-site {
-    background-color:var(--orange);
-    color:var(--dark);
-    border:1px solid var(--dark);
-    box-shadow: 3px 3px 3px var(--dark);
-}
-
-.btn-site:hover {
-    background-color:var(--dark);
-    color:var(--orange);
-    border:1px solid var(--orange);
-    box-shadow: 2px 2px 2px var(--orange);
-}
-
-/* -------------------------------------------- */
 /* first connexion */
 /* -------------------------------------------- */
 
@@ -73,13 +56,12 @@ html, body {
 #login-form .form-signin {
     width: 100%;
     max-width: 400px;
+    color:var(--white);
+    background-color:var(--dark);
     padding: 15px;
     margin: auto;
-    border:3px solid var(--orange);
+    border:1px solid var(--orange);
     border-radius:10px;
-    background-color:var(--grey);
-    color:var(--orange);
-    box-shadow:2px 2px 2px var(--dark);
 }
 
 #login-form .form-signin input {
@@ -145,22 +127,22 @@ html, body {
 
 
 /* -------------------------------------------- */
-/* admin */
+/* navbar */
 /* -------------------------------------------- */
-.card-overflow {
-    max-height: 100px;
-    overflow: hidden;
+nav ul ul {
+    display: none;
 }
 
-#adminEvent h1{
-    padding-left:0px;
-    padding-right: 0px;
+nav ul li:hover > ul {
+    display: block;
 }
 
-#adminEventList button{
-    width: 80%;
-    margin: auto;
-}
+/* -------------------------------------------- */
+/* Site */
+/* -------------------------------------------- */
+
+
+
 
 /* -------------------------------------------------------- */
 /* media queries*/

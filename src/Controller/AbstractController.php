@@ -63,6 +63,8 @@ abstract class AbstractController
 
         if (empty($society)) {
             header("Location:/society/add");
+        } else {
+            return $societyManager->showSociety();
         }
     }
 }

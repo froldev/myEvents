@@ -6,68 +6,72 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav flex-column mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/dasboard/list">
-                    <i class="fas fa-chart-bar"></i>
+                <a class="nav-link" href="/dashboard/list">
                     Dashboard
                 </a>
             </li>
             <hr>
             <li class="nav-item">
                 <a class="nav-link" href="/society/list">
-                    <i class="fas fa-chart-bar"></i>
-                    Société
+                    Gestion de la Société
                 </a>
             </li>
             <hr>
             <li class="nav-item">
-                <a class="nav-link" href="/navbar/list">
-                    <i class="fas fa-chart-bar"></i>
-                    Menu
+                <a class="nav-link" href="/site/presentation">Gestion du Site</a>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/navbar/list">
+                            Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            Pages
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/partners/list">
+                            Partenaires
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="">Gestion des Evènements</a>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/events/list">
+                            Evenements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categories/list">
+                            Catégories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/partners/list">
+                            Artistes
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="/comments/list">
+                    Gestion des Messages
                 </a>
             </li>
             <hr>
             {% if session.role == 1 %}
                 <li class="nav-item">
                     <a class="nav-link" href="/users/list">
-                        <i class="far fa-user"></i>
-                        Utilisateurs
+                        Gestion des Utilisateurs
                     </a>
                 </li>
                 <hr>
             {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="/events/list">
-                    <i class="far fa-edit"></i>
-                    Evenements
-                </a>
-            </li>
-            <hr>
-            <li class="nav-item">
-                <a class="nav-link" href="/categories/list">
-                    <i class="far fa-list-alt"></i>
-                    Catégories
-                </a>
-            </li>
-            <hr>
-            <li class="nav-item">
-                <a class="nav-link" href="/partners/list">
-                    <i class="fas fa-music"></i>
-                    Artistes
-                </a>
-            </li>
-            <hr>
-            <li class="nav-item">
-                <a class="nav-link" href="/partners/list">
-                    <i class="far fa-handshake"></i>
-                    Partenaires
-                </a>
-            </li>
-            <hr>
-            <li class="nav-item">
-                <a class="nav-link" href="/comments/list">
-                    <i class="far fa-envelope-open"></i>
-                    Messages
-                </a>
-            </li>
         </ul>
 </nav>

@@ -5,7 +5,9 @@
 {% block content %}
 
     <form role="form" action="/admin/login" method="POST" class="form-signin">
-        <img class="mb-4" src="/assets/images/logo_Olympic_Nantais.png" alt="logo Olympic Nantais" width="200">
+        {% if society.logo is not empty %}
+        <img class="mb-4" src="{{society.logo}}" alt="logo {{society.text}}" width="200">
+        {% endif %}
         <h2 class="h3 mb-3 font-weight-normal">
             Veuillez entrer votre identifiant et votre mot de passe :
         </h2>
@@ -31,12 +33,13 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="col-4 btn btn-lg btn-site">
+            <button class="col-4 btn btn-lg btn-outline-danger">
+                <a class="text-white" href="/"> << Retour</a>
+            </button>
+            <button type="submit" class="col-4 btn btn-lg btn-outline-primary">
                 Connexion
             </button>
         </div>
-        <button type="submit" class="btn btn-dark mb-2">
-            <a class="text-white" href="/"> << Retour</a>
-        </button>
+
     </form>
 {% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'adminLayout.html.twig' %}
+
+{% block title %}{{companies.name}} || Gestion du site{% endblock %}
+
+{% block content %}
+
+    <section id="site-gestion">
+
+        <div class="row">
+            <h1>Dashboard</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-outline-danger" href="/events/list">
+                    <div class="p-3">
+                        <div class="card-block">
+                            <h3 class="m-b-20">Société</h3>
+                            <p>{{ society.name }}</p>
+                            <button class="btn btn-default"> VOIR </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-outline-danger" href="/events/list">
+                <div class="p-3">
+                    <div class="card-block">
+                        <h3 class="m-b-20">Nombre d'évènements</h3>
+                        <p>{{ events }}</p>
+                        <button class="btn btn-default"> VOIR </button>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-outline-success" href="/categories/list">
+                    <div class="p-3">
+                        <div class="card-block">
+                            <h3 class="m-b-20">Nombre de catégories</h3>
+                            <p>{{ categories }}</p>
+                            <button class="btn btn-default"> VOIR </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-outline-warning" href="/partners/list">
+                    <div class="p-3">
+                        <div class="card-block">
+                            <h3 class="m-b-20">Nombre de Partenaires</h3>
+                            <p>{{ partners }}</p>
+                            <button class="btn btn-default"> VOIR </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <a class="btn btn-outline-secondary" href="/comments/list">
+                    <div class="p-3">
+                        <div class="card-block">
+                            <h3 class="m-b-20">Nombre de Demandes</h3>
+                            <p>{{ comments }}</p>
+                            <button class="btn btn-default"> VOIR </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

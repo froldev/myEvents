@@ -13,23 +13,8 @@ class NavbarManager extends AbstractManager
 
     public function selectNavbar(): array
     {
-        $request = $this->pdo->query("SELECT * FROM " .self::TABLE. " ORDER BY text");
+        $request = $this->pdo->query("SELECT * FROM " .self::TABLE. " ORDER BY list");
         return $request->fetchAll();
-    }
-
-    public function insertNavbar(array $navbar): bool
-    {
-        $request = $this->pdo->prepare("INSERT INTO " .self::TABLE. " (text, link) VALUES (:text, :link)");
-        $request->bindValue(":text", ucfirst(strtolower($navbar["text"])), \PDO::PARAM_STR);
-        $request->bindValue(":link", $navbar["link"], \PDO::PARAM_STR);
-        return $request->execute();
-    }
-
-    public function deleteNavbar(int $id): void
-    {
-        $request = $this->pdo->prepare("DELETE FROM " .self::TABLE. " WHERE id=:id");
-        $request->bindValue(":id", $id, \PDO::PARAM_INT);
-        $request->execute();
     }
 
     public function updateNavbar(array $navbar):bool

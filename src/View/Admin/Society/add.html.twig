@@ -1,21 +1,25 @@
 {% extends 'adminLayout.html.twig' %}
 
-{% block title %}Olympic Nantais || Nouvelle Société{% endblock %}
+{% block title %}{{society.name}} || Nouvelle Société{% endblock %}
 
 {% block content %}
 
-    <section id="societyAdd">
-        <div class="row">
+    <section id="societyAName">
 
-            <div id="adminTitle">
+        <div id="adminTitle" class="p-3 border border-dark rounded">
+            <div class="row">
                 <h1>1ère connexion</h1>
                 <h2>Veuillez indiquer les informations de votre société</h2>
+                <p><i>(Tous les champs marqués par * sont obligatoires)</i></p>
             </div>
+        </div>
 
-            <form method="POST" class="col-12">
-                <div class="form-row mt-4 mb-4">
+        <form method="POST" class="col-12">
+            <div class="form-row mt-4 mb-4">
+                <div class="col-12 p-3 mt-3 border border-primary rounded">
+
                     <div class="col-12 mb-3">
-                        <label class="form-label">Nom de la société :</label>
+                        <label class="form-label">Nom de la société * :</label>
                         <input type="text" class="form-control {% if nameError is not null %}is-invalid{% endif %}"
                                id="name" name="name" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
@@ -23,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Adresse :</label>
+                        <label class="form-label">Adresse * :</label>
                         <input type="text" class="form-control {% if addressError is not null %}is-invalid{% endif %}"
                                id="address" name="address" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
@@ -31,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Code Postal :</label>
+                        <label class="form-label">Code Postal * :</label>
                         <input type="text" class="form-control {% if cpError is not null %}is-invalid{% endif %}"
                                id="cp" name="cp" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
@@ -39,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Ville :</label>
+                        <label class="form-label">Ville * :</label>
                         <input type="text" class="form-control {% if townError is not null %}is-invalid{% endif %}"
                                id="town" name="town" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
@@ -47,15 +51,21 @@
                         </div>
                     </div>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Logo :</label>
+                        <label class="form-label">Logo * :</label>
                         <input type="text" class="form-control {% if logoError is not null %}is-invalid{% endif %}"
                                id="logo" name="logo" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
                             {{ logoError }}
                         </div>
                     </div>
+
+                </div>
+
+                <div class="col-12 p-3 mt-3 border border-primary rounded">
+
+                    <h2 class="mt-2 mb-2">Contact :</h2>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Téléphone :</label>
+                        <label class="form-label">Téléphone * :</label>
                         <input type="text" class="form-control {% if phoneError is not null %}is-invalid{% endif %}"
                                id="phone" name="phone" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
@@ -63,13 +73,19 @@
                         </div>
                     </div>
                     <div class="col-12 mb-3">
-                        <label class="form-label">Email :</label>
+                        <label class="form-label">Email * :</label>
                         <input type="text" class="form-control {% if emailError is not null %}is-invalid{% endif %}"
                                id="email" name="email" aria-describedby="inputCréerSociété" required>
                         <div class="invalid-feedback">
                             {{ emailError }}
                         </div>
                     </div>
+
+                </div>
+
+                <div class="col-12 p-3 mt-3 border border-primary rounded">
+
+                    <h2 class="mt-2 mb-2">Liens sociaux :</h2>
                     <div class="col-12 mb-3">
                         <label class="form-label">Github :</label>
                         <input type="text" class="form-control"
@@ -90,14 +106,16 @@
                         <input type="text" class="form-control"
                                id="instagram" name="instagram" aria-describedby="inputCréerSociété">
                     </div>
-                    <div class="col-12 mb-3">
-                        <button type="submit" class="btn btn-site btn-lg">Confirmer</button>
-                    </div>
 
                 </div>
-            </form>
 
-        </div>
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-outline-primary btn-lg">Confirmer</button>
+                </div>
+
+            </div>
+        </form>
+
     </section>
 
 {% endblock %}

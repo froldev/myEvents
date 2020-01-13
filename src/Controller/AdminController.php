@@ -50,7 +50,7 @@ class AdminController extends AbstractController
                     if ($_SESSION['role'] <= 2) {
                         $events = new EventsManager();
                         $events->deleteLastEvents();
-                        header('Location:/society/list');
+                        header('Location:/dashboard/list');
                     }
                     $errorConnexion = "Vous n'avez pas les accès à cet espace d'administration";
                     return $this->twig->render('Admin/login.html.twig', [
