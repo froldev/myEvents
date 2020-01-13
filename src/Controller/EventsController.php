@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Model\CategoriesManager;
 use App\Model\EventsManager;
-use App\Model\UsersManager;
+use App\Model\AdminManager;
 
 class EventsController extends AbstractController
 {

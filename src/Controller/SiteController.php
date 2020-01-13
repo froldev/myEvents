@@ -13,9 +13,10 @@ class SiteController extends AbstractController
 
         $societyManager = new SocietyManager();
         $society = $societyManager->showSociety();
+        $society = $society[0];
 
         return $this->twig->render("Admin/Site/list.html.twig", [
-            'companies' => $society,
+            'society' => $society,
         ]);
     }
 }

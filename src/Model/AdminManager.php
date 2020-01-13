@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-class UsersManager extends AbstractManager
+class AdminManager extends AbstractManager
 {
-    const TABLE = 'users';
+    const TABLE = 'admin';
 
     public function __construct()
     {

@@ -44,7 +44,7 @@ VALUES
 ('User')
 ;
 
-CREATE TABLE users(
+CREATE TABLE admin(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(100) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE users(
     role_id INT NOT NULL
 );
 
-INSERT INTO users (email, password, lastname, firstname, role_id)
+INSERT INTO admin (email, password, lastname, firstname, role_id)
 VALUES
 ('admin@admin.fr', '$2y$10$Fhv9XSpyrwy9lyMYvU1joOB74jHg1FwDedPu84UU3.GosX/QNWJLG', 'Super', 'Admin', 1)
 ;

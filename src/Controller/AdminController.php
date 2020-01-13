@@ -1,56 +1,162 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aurelwcs
- * Date: 08/04/19
- * Time: 18:40
- */
 
 namespace App\Controller;
 
-use App\Model\SocietyManager;
-use App\Model\UsersManager;
-use App\Model\EventsManager;
+use App\Model\RoleManager;
+use App\Model\AdminManager;
 
 class AdminController extends AbstractController
 {
+    public function list()
+    {
+        $this->verifySession();
+        $this->verifySociety();
 
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function login()
+        $usersManager = new AdminManager();
+        $users = $usersManager->selectUsersAndRole();
+
+        $rolesManager = new RoleManager();
+        $roles = $rolesManager->selectAll();
+
+        return $this->twig->render("Admin/Admin/list.html.twig", [
+            "users" => $users,
+            "roles" => $roles,
+        ]);
+    }
+
+    public function add(): string
+    {
+        $this->verifySession();
+        $this->verifySociety();
+
+        $rolesManager = new RoleManager();
+        $roles = $rolesManager->selectAll();
+
+        $lastNameError = null;
+        $firstNameError = null;
+        $emailError = null;
+        $passwordError = null;
+        $roleError = null;
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $isValid = true;
+            // nom
+            if (empty($_POST['lastname']) || !isset($_POST['lastname'])) {
+                $lastNameError = "Merci de saisir un nom";
+                $isValid = false;
+            }
+            // prénom
+            if (empty($_POST['firstname']) || !isset($_POST['firstname'])) {
+                $firstNameError = "Merci de saisir un prénom";
+                $isValid = false;
+            }
+            // mail
+            if (empty($_POST['email']) || !isset($_POST['email'])) {
+                $emailError = "Merci de saisir un email";
+                $isValid = false;
+            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $emailError = "Le format du mail n\'est pas bon";
+                $isValid = false;
+            }
+            // password
+            if (empty($_POST['password']) || !isset($_POST['password'])) {
+                $passwordError = "Merci de saisir un mot de passe";
+                $isValid = false;
+            }
+            // role
+            if (empty($_POST['role']) || !isset($_POST['role'])) {
+                $roleError = "Merci de sélectionner un role";
+                $isValid = false;
+            }
+            // if it's ok
+            if ($isValid) {
+                $usersManager = new AdminManager();
+                if ($usersManager->insertUser($_POST)) {
+                    header("Location:/users/list");
+                }
+            }
+        }
+        return $this->twig->render("Admin/Admin/add.html.twig", [
+            "lastNameError"     => $lastNameError,
+            "firstNameError"    => $firstNameError,
+            "emailError"        => $emailError,
+            "passwordError"     => $passwordError,
+            "roleError"         => $roleError,
+            "roles"             => $roles,
+        ]);
+    }
+
+    public function delete(int $id): void
+    {
+        $this->verifySession();
+        $this->verifySociety();
+
+        $usersManager = new AdminManager();
+        $user = $usersManager->selectOneById($id);
+
+        if ($user['email'] === "admin@admin.fr") {
+            header("Location:/users/list");
+        }
+
+        if (strtolower($user['role_id']) != 1) {
+            $usersManager->deleteUsers($id);
+        }
+        header("Location:/users/list");
+    }
+
+    public function edit(int $id): string
+    {
+        $this->verifySession();
+        $this->verifySociety();
+
+        $usersManager = new AdminManager();
+        $user = $usersManager->selectOneById($id);
+
+        if ($user['email'] === "admin@admin.fr") {
+            header("Location:/users/list");
+        }
+
+        $rolesManager = new RoleManager();
+        $roles = $rolesManager->selectAll();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user['id'] = $id;
+            $user['lastname'] = $_POST['lastname'];
+            $user['firstname'] = $_POST['firstname'];
+            $user['email'] = $_POST['email'];
+            $user['password'] = $_POST['password'];
+            $user['role'] = $_POST['role'];
+            if ($usersManager->updateUser($user)) {
+                header("Location:/users/list");
+            }
+        }
+        return $this->twig->render('Admin/Admin/edit.html.twig', [
+            'user'  => $user,
+            'roles' => $roles,
+        ]);
+    }
+
+    public function login(): string
     {
         $errorMail = $errorMdp = $errorConnexion = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $isValid = true;
-
             if (empty($_POST['email']) || !isset($_POST['email'])) {
                 $errorMail = "Vous devez compléter l'email";
                 $isValid = false;
             }
-
             if (empty($_POST['password']) || !isset($_POST['password'])) {
                 $errorMdp = "Vous devez compléter le mot de passe";
                 $isValid = false;
             }
-
             if ($isValid) {
-                $usersManager = new UsersManager();
+                $usersManager = new AdminManager();
                 $user = $usersManager->selectPassword($_POST['email']);
-
                 if (password_verify($_POST['password'], $user["password"])) {
                     $_SESSION['name'] = $user["firstname"];
                     $_SESSION['role'] = $user["role_id"];
-
                     if ($_SESSION['role'] <= 2) {
-                        $events = new EventsManager();
-                        $events->deleteLastEvents();
-                        header('Location:/dashboard/list');
+                        header('Location:/events/list');
                     }
                     $errorConnexion = "Vous n'avez pas les accès à cet espace d'administration";
                     return $this->twig->render('Admin/login.html.twig', [
@@ -62,17 +168,14 @@ class AdminController extends AbstractController
                     'errorConnexion' => $errorConnexion,
                 ]);
             }
-
             return $this->twig->render('Admin/login.html.twig', [
                 'errorMail' => $errorMail,
                 'errorMdp' => $errorMdp,
             ]);
         }
-
         return $this->twig->render('Admin/login.html.twig');
     }
-
-    public function logout()
+    public function logout(): void
     {
         session_destroy();
         header('Location:/');
